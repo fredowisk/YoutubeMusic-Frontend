@@ -1,0 +1,16 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "YouTube Music clone",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx browser-sync -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["javascript", "css", "html"],
+  "author": "fredowisk",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.28.3"
+  }
+}

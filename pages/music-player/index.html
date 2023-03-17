@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="https://img.icons8.com/plasticine/32/youtube-music.png" type="image/x-icon">
+    <link rel="stylesheet" href="./lib/style.css" />
+    <title>YouTube Music</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Explore</a>
+        </li>
+        <li>
+          <a href="#">Media</a>
+        </li>
+        <li>
+          <a href="#">Search</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <video></video>
+      <div class="list">
+        <div class="up">
+          <h3>up coming</h3>
+        </div>
+        <ul class="playlist"></ul>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="seekObj">
+        <div class="percentage"></div>
+      </div>
+    </div>
+    <div class="foot">
+      <footer>
+        <div class="play">
+          <button class="pre"></button>
+          <button class="start"></button>
+          <button class="next"></button>
+          <div class="videoTimer">
+            <span class="currentTime">00:00</span>
+            <span class="duration">00:00</span>
+          </div>
+        </div>
+        <div class="title"><h3>San Holo</h3></div>
+        <div class="adjust">
+          <input type="button" class="vol" value="100" min="0" max="100"></input>
+          <button class="cic"></button>
+          <button class="shuf"></button>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="./src/index.js"></script>
+  </body>
+</html>
