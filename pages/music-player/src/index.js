@@ -135,3 +135,5 @@ window.addEventListener("load", async () => {
 });
 
 seekObj.addEventListener("click", seek.bind(seekObj));
+
+//test
