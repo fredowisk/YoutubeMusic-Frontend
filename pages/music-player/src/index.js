@@ -46,7 +46,7 @@ async function getRelatedSongs() {
     mode: "cors",
   });
 
-  const { songs } = await response.json();
+  const songs = await response.json();
 
   let playlistSongs = "";
 
@@ -104,11 +104,11 @@ volumeButton.onclick = () => {
 };
 
 volumeButton.onmouseenter = () => {
-  volumeButton.type = "range"
-}
+  volumeButton.type = "range";
+};
 volumeButton.onmouseleave = () => {
   volumeButton.type = "button";
-}
+};
 
 video.onended = () => {
   videoButton.classList.remove("pause");
@@ -121,7 +121,7 @@ video.addEventListener("timeupdate", updateProgressBar);
 window.addEventListener("load", async () => {
   const { search } = new URL(window.location.href);
 
-  video.src = `${url}${search}`;
+  video.src = `${url}song${search}`;
 
   await Promise.all([
     getRelatedSongs(),
