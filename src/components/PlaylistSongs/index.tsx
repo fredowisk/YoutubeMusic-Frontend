@@ -8,8 +8,13 @@ import { VideoContext } from "@/contexts/VideoContext";
 
 import styles from "./styles.module.scss";
 
-export function PlaylistSongs({ songs, id }: any) {
-  const { setPlaylist, setCurrentIndex, playlist, shufflePlaylist } =
+interface PlaylistSongs {
+  songs: Song[];
+  id: number;
+}
+
+export function PlaylistSongs({ songs, id }: PlaylistSongs) {
+  const { setPlaylist, setCurrentIndex, playlist } =
     useContext(VideoContext);
   const liRef = useRef<HTMLLIElement>(null);
 
@@ -17,6 +22,7 @@ export function PlaylistSongs({ songs, id }: any) {
     liRef.current?.scrollIntoView({
       block: "end",
     });
+
     if (playlist.length) return;
 
     const [currentSong] = songs.splice(id - 1, 1);
@@ -25,12 +31,11 @@ export function PlaylistSongs({ songs, id }: any) {
 
   useEffect(() => {
     if (!playlist.length) return;
-    const index = playlist.findIndex(({ song_id }: any) => song_id === id);
-    console.log(index);
+
+    const index = playlist.findIndex(({ song_id }) => song_id === id);
+
     setCurrentIndex(index);
   }, [playlist]);
-
-  console.log("PlaylistSongs");
 
   return (
     <div className={styles.container}>
@@ -38,7 +43,7 @@ export function PlaylistSongs({ songs, id }: any) {
       <div className={styles.divider}></div>
       <div className={styles.playlistContainer}>
         <ul className={styles.playlist}>
-          {playlist.map((song: any, index: any) => (
+          {playlist.map((song: Song, index: number) => (
             <li
               key={song.title + index + song.song_id}
               className={`${styles.song} ${
@@ -58,9 +63,7 @@ export function PlaylistSongs({ songs, id }: any) {
                     alt={song.title}
                   />
                   <div className={styles.songInfo}>
-                    <span>
-                      {song.title + "oooooooooooooooooooooooooooooooooooooooo"}
-                    </span>
+                    <span>{song.title}</span>
                     <span>{song.user}</span>
                   </div>
                 </div>

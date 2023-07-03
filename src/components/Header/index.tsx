@@ -4,8 +4,6 @@ import styles from "./styles.module.scss";
 
 export function Header() {
 
-  console.log('header');
-  
   return (
     <div className={styles.container}>
       <nav className={styles.navigator}>

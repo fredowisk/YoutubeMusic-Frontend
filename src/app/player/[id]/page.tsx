@@ -9,17 +9,24 @@ import { PlaylistSongs } from "@/components/PlaylistSongs";
 import { VideoPanel } from "@/components/VideoPanel";
 
 import styles from "./styles.module.scss";
+import Error from "./error";
 
-export default async function PlayerPage({ params: { id } }: any) {
-  const response = await fetch("http://localhost:3001/songs");
+interface PlayerPageProps {
+  params: {
+    id: string;
+  };
+}
 
-  const songs = await response.json();
+export default async function PlayerPage({ params: { id } }: PlayerPageProps) {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/songs`);
+
+  const songs = (await response.json()) as Song[];
 
   const numberId = Number(id);
 
-  const song = songs.find(({ song_id }: any) => song_id === numberId);
+  const song = songs.find(({ song_id }) => song_id === numberId);
 
-  console.log("PlayerPage");
+  if (!song) return <Error />;
 
   return (
     <div className={styles.container}>

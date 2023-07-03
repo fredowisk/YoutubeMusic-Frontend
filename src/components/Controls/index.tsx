@@ -17,9 +17,14 @@ import { VideoContext } from "@/contexts/VideoContext";
 
 import styles from "./styles.module.scss";
 
+interface ControlsProps {
+  song: Song
+}
+
 export function Controls({
   song: { thumbnail, duration, title, user },
-}: any) {
+}: ControlsProps) {
+
   const {
     repeatButtonRef,
     shuffleButtonRef,
@@ -39,8 +44,6 @@ export function Controls({
   useEffect(() => {
     clearButtons();
   }, []);
-
-  console.log("controls");
 
   return (
     <div className={styles.container}>
@@ -76,7 +79,7 @@ export function Controls({
         <input
           type="range"
           className={styles.songVolume}
-          onChange={(e) => updateVolume(e.target.value)}
+          onChange={(e) => updateVolume(Number(e.target.value))}
           min="0"
           max="100"
         />

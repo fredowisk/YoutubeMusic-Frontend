@@ -8,12 +8,14 @@ import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 import styles from "./styles.module.scss";
 
-export function Carousel({ songs }: any) {
+interface CarouselProps {
+  songs: Song[];
+}
+
+export function Carousel({ songs }: CarouselProps) {
   const carouselRef = useRef<HTMLUListElement>(null);
 
   let currentIndex = 0;
-
-  console.log("carousel");
 
   function slideTo(index: number) {
     if (carouselRef.current)
@@ -26,10 +28,10 @@ export function Carousel({ songs }: any) {
     <div className={styles.container}>
       <div className={styles.gallery}>
         <ul ref={carouselRef} className={styles.carousel}>
-          {songs.map((song: any) => (
-            <li key={song.song_id}>
-              <Link href={`/player/${song.song_id}`} prefetch={false}>
-                <img src={song.thumbnail} alt={song.title} />
+          {songs.map(({ song_id, thumbnail, title }) => (
+            <li key={song_id}>
+              <Link href={`/player/${song_id}`} prefetch={false}>
+                <img src={thumbnail} alt={title} />
               </Link>
             </li>
           ))}

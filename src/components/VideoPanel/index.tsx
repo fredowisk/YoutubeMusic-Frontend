@@ -1,9 +1,13 @@
-import { Controls } from "../Controls";
-import { Timeline } from "../Timeline";
+import { Controls } from "@/components/Controls";
+import { Timeline } from "@/components/Timeline";
 
 import styles from "./styles.module.scss";
 
-export function VideoPanel({ song }: any) {
+interface VideoPanelProps {
+  song: Song
+}
+
+export function VideoPanel({ song }: VideoPanelProps) {
   return (
     <div className={styles.container}>
       <div className={styles.panel}>

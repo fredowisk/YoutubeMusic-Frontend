@@ -1,10 +1,16 @@
 "use client";
 
 import { useContext } from "react";
-import styles from "./styles.module.scss";
+
 import { VideoContext } from "@/contexts/VideoContext";
 
-export function VideoPlayer({ id }: any) {
+import styles from "./styles.module.scss";
+
+interface VideoPlayerProps {
+  id: number
+}
+
+export function VideoPlayer({ id }: VideoPlayerProps) {
   const {
     videoRef,
     togglePlayVideo,
@@ -12,13 +18,11 @@ export function VideoPlayer({ id }: any) {
     endSong,
   } = useContext(VideoContext);
 
-  console.log("videoPlayer");
-
   return (
     <div className={styles.container}>
       <video
         ref={videoRef}
-        src={`http://localhost:3001/song?watch=${id}`}
+        src={`${process.env.NEXT_PUBLIC_API_URL}/song?watch=${id}`}
         autoPlay
         onClick={togglePlayVideo}
         onTimeUpdate={updateProgressBar}

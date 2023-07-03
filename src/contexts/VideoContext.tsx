@@ -1,26 +1,56 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { createContext, useRef, useState } from "react";
+import { ReactNode, RefObject, createContext, useRef, useState } from "react";
 
-export const VideoContext = createContext({} as any);
+interface VideoContextValues {
+  setPlaylist: (playlist: Song[]) => void;
+  setCurrentIndex: (index: number) => void;
+  currentIndex: number;
+  videoRef: RefObject<HTMLVideoElement>;
+  currentTimeRef: RefObject<HTMLTimeElement>;
+  timelineRef: RefObject<HTMLDivElement>;
+  seekerRef: RefObject<HTMLDivElement>;
+  repeatButtonRef: RefObject<HTMLButtonElement>;
+  shuffleButtonRef: RefObject<HTMLButtonElement>;
+  isPaused: boolean;
+  isMuted: boolean;
+  playlist: Song[];
+  togglePlayVideo: () => void;
+  toggleAudio: () => void;
+  toggleRepeatButton: () => void;
+  shufflePlaylist: () => void;
+  updateVolume: (volume: number) => void;
+  updateProgressBar: () => void;
+  seekInTimeline: (e: any) => void;
+  navigateToPreviousSong: () => void;
+  navigateToNextSong: () => void;
+  clearButtons: () => void;
+  endSong: () => void;
+}
 
-export const VideoContextProvider = ({ children }: any) => {
+interface VideoContextProviderProps {
+  children: ReactNode;
+}
+
+export const VideoContext = createContext({} as VideoContextValues);
+
+export const VideoContextProvider = ({
+  children,
+}: VideoContextProviderProps) => {
   const router = useRouter();
 
   const videoRef = useRef<HTMLVideoElement>(null);
-  const timelineRef = useRef<HTMLDivElement>(null);
   const currentTimeRef = useRef<HTMLTimeElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
   const seekerRef = useRef<HTMLDivElement>(null);
   const repeatButtonRef = useRef<HTMLButtonElement>(null);
   const shuffleButtonRef = useRef<HTMLButtonElement>(null);
 
-  const [playlist, setPlaylist] = useState<any>([]);
+  const [playlist, setPlaylist] = useState<Song[]>([]);
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  console.log("context");
 
   const togglePlayVideo = () => {
     if (!videoRef.current) return;
@@ -58,7 +88,7 @@ export const VideoContextProvider = ({ children }: any) => {
     setPlaylist(shuffledPlaylist);
   };
 
-  const updateVolume = (volume: any) => {
+  const updateVolume = (volume: number) => {
     if (!videoRef.current) return;
 
     videoRef.current.volume = volume / 100;
@@ -67,8 +97,10 @@ export const VideoContextProvider = ({ children }: any) => {
     if (videoRef.current.volume > 0 && isMuted) return toggleAudio();
   };
 
-  const calculateCurrentTime = (currentTime: any) => {
-    if (!videoRef.current) return;
+  const calculateCurrentTime = (
+    currentTime: number = 0
+  ): string | undefined => {
+    if (!currentTime) return;
     const currentMinute = Math.floor(currentTime / 60);
     const currentSeconds = (currentTime % 60).toFixed();
     const currentTimeFormatted = `${String(currentMinute).padStart(
@@ -85,6 +117,7 @@ export const VideoContextProvider = ({ children }: any) => {
   };
 
   function seekInTimeline(e: any) {
+    typeof e;
     if (!videoRef.current || !seekerRef.current) return;
 
     const percent = e.nativeEvent.offsetX / seekerRef.current.offsetWidth;
