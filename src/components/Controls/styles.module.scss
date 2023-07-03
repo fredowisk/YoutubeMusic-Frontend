@@ -1,0 +1,189 @@
+.container {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 2rem;
+
+  width: 100vw;
+  height: 8rem;
+  background-color: var(--black-700);
+
+  padding: 0 2rem;
+}
+
+.leftButtons {
+  width: 16rem;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a,
+  button {
+    background-color: transparent;
+
+    color: var(--white);
+
+    transition: ease 0.2s;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:first-of-type,
+    &:last-child {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    &:hover {
+      opacity: 60%;
+    }
+  }
+}
+
+.startButton {
+  width: 6rem;
+  height: 6rem;
+}
+
+.playerTimer {
+  color: var(--gray-200);
+
+  width: 7rem;
+
+  font-size: 1.2rem;
+  font-weight: 400;
+
+  time {
+    padding: 0 0.2rem;
+  }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.songContainer {
+  margin-left: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 50rem;
+
+  gap: 1.5rem;
+
+  img {
+    width: 7rem;
+    height: 5rem;
+
+    object-fit: cover;
+  }
+
+  @media (max-width: 500px) {
+    img {
+      display: none;
+    }
+  }
+}
+
+.songInfo {
+  font-size: 1.5rem;
+  max-width: 40rem;
+
+  h3 {
+    font-weight: 500;
+    color: var(--white);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  h4 {
+    font-weight: 500;
+    color: var(--gray-200);
+  }
+
+  @media (max-width: 500px) {
+    font-size: 2rem;
+  }
+}
+
+.rightButtons {
+  width: 30rem;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1.5rem;
+
+  button {
+    background-color: transparent;
+
+    width: 3rem;
+    height: 3rem;
+
+    transition: ease 0.2s;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      opacity: 60%;
+    }
+  }
+
+  input {
+    appearance: none;
+    width: 8rem;
+    background-color: transparent;
+    color: transparent;
+    cursor: pointer;
+
+    &::-webkit-slider-runnable-track,
+    -moz-range-track,
+    -ms-track {
+      width: 100%;
+      height: 0.5rem;
+      background-color: var(--gray-200);
+      border-radius: 1rem;
+    }
+
+    &::-webkit-slider-thumb,
+    -moz-range-thumb,
+    -ms-thumb {
+      appearance: none;
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+      background-color: var(--white);
+
+      transform: translateY(-30%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.repeat,
+.shuffle {
+  color: var(--background-gray);
+}
+
+.songAudio {
+  color: var(--white);
+}

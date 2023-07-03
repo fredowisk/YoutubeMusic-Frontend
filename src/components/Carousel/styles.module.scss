@@ -1,0 +1,81 @@
+.container {
+  position: relative;
+  max-width: 100vw;
+  padding: 1rem 0;
+}
+
+.gallery {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  height: 22rem;
+  width: 90%;
+  display: flex;
+  align-items: center;
+
+  gap: 2rem;
+
+  transition: transform 0.5s ease;
+
+  li {
+    a {
+      transition: ease 0.2s;
+
+      img {
+        border-radius: 2rem;
+        max-width: 40rem;
+        max-height: 40rem;
+      }
+      &:hover {
+        opacity: 80%;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+
+    li a img {
+      max-width: 100%;
+    }
+  }
+}
+
+.buttons {
+  position: absolute;
+  top: -16%;
+  right: 0;
+
+  button {
+    background-color: transparent;
+    width: 4rem;
+    height: 4rem;
+
+    border-radius: 50%;
+
+    color: var(--white);
+
+    transition: ease 0.2s;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+
+    &:hover {
+      opacity: 60%;
+    }
+
+    & + button {
+      margin-left: 3rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+}

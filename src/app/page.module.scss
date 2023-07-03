@@ -1,0 +1,20 @@
+.container {
+  position: relative;
+
+  padding: 4rem 6rem;
+  background-color: var(--background-black);
+
+  min-height: 100vh;
+
+  h2 {
+    color: var(--white);
+    font-size: 4rem;
+  }
+
+  @media (max-width: 500px) {
+    h2 {
+      margin-top: 2rem;
+      font-size: 6rem;
+    }
+  }
+}
