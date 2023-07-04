@@ -38,24 +38,28 @@
       height: 86rem;
     }
 
-    @media (max-height: 900px) {
-      height: 82rem;
-    }
-
-    @media (max-height: 860px) {
-      height: 90rem;
-    }
-
-    @media (max-height: 750px) {
-      height: 78rem;
-    }
-
-    @media (max-height: 670px) {
+    @media (max-height: 950px) {
       height: 60rem;
     }
 
-    @media (max-height: 656px) {
-      height: 82rem;
+    @media (max-height: 890px) {
+      height: 58rem;
+    }
+
+    @media (max-height: 860px) {
+      height: 64rem;
+    }
+
+    @media (max-height: 800px) {
+      height: 60rem;
+    }
+
+    @media (max-height: 760px) {
+      height: 54rem;
+    }
+
+    @media (max-height: 670px) {
+      height: 42rem;
     }
   }
 }
