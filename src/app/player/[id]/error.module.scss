@@ -2,7 +2,7 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: var(--background-black);
+  background-color: var(--black-200);
 
   padding-top: 6rem;
 
@@ -15,7 +15,7 @@
   font-size: 6rem;
   color: var(--white);
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     max-width: 60rem;
     text-align: center;
   }
@@ -24,7 +24,7 @@
 .link {
   padding: 2rem;
   border-radius: 2rem;
-  background-color: var(--background-red);
+  background-color: var(--red-500);
   color: var(--white);
 
   font-size: 2rem;
@@ -38,7 +38,7 @@
     opacity: 80%;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     padding: 4rem;
 
     font-size: 4rem;

@@ -2,7 +2,7 @@
   position: relative;
 
   padding: 4rem 6rem;
-  background-color: var(--background-black);
+  background-color: var(--black-200);
 
   min-height: 100vh;
 
@@ -11,7 +11,7 @@
     font-size: 4rem;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     h2 {
       margin-top: 2rem;
       font-size: 6rem;

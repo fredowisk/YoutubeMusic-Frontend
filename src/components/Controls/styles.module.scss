@@ -112,7 +112,7 @@
     color: var(--gray-200);
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     font-size: 2rem;
   }
 }
@@ -144,9 +144,10 @@
       opacity: 60%;
     }
   }
+}
 
-  input {
-    appearance: none;
+.songVolume {
+  appearance: none;
     width: 8rem;
     background-color: transparent;
     color: transparent;
@@ -176,12 +177,11 @@
     &:focus {
       outline: none;
     }
-  }
 }
 
 .repeat,
 .shuffle {
-  color: var(--background-gray);
+  color: var(--gray-250);
 }
 
 .songAudio {

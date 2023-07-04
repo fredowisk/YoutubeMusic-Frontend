@@ -8,6 +8,14 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "keywords": [
+    "youtube-music",
+    "next.js",
+    "typescript",
+    "scss",
+    "clone",
+    "frontend"
+  ],
   "dependencies": {
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",

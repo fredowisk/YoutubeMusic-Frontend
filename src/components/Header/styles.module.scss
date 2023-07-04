@@ -1,7 +1,7 @@
 .container {
   width: 100%;
 
-  background-color: var(--background-black);
+  background-color: var(--black-200);
 }
 
 .navigator {
@@ -25,7 +25,7 @@
 .list {
   a {
     font-size: 2rem;
-    color: var(--font-gray);
+    color: var(--gray-200);
 
     font-family: inherit;
 

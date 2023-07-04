@@ -1,7 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ReactNode, RefObject, createContext, useRef, useState } from "react";
+import {
+  ReactNode,
+  RefObject,
+  createContext,
+  useRef,
+  useState,
+} from "react";
 
 interface VideoContextValues {
   setPlaylist: (playlist: Song[]) => void;
@@ -10,19 +16,19 @@ interface VideoContextValues {
   videoRef: RefObject<HTMLVideoElement>;
   currentTimeRef: RefObject<HTMLTimeElement>;
   timelineRef: RefObject<HTMLDivElement>;
-  seekerRef: RefObject<HTMLDivElement>;
   repeatButtonRef: RefObject<HTMLButtonElement>;
   shuffleButtonRef: RefObject<HTMLButtonElement>;
   isPaused: boolean;
   isMuted: boolean;
   playlist: Song[];
+  progress: number;
   togglePlayVideo: () => void;
   toggleAudio: () => void;
   toggleRepeatButton: () => void;
   shufflePlaylist: () => void;
   updateVolume: (volume: number) => void;
   updateProgressBar: () => void;
-  seekInTimeline: (e: any) => void;
+  seekInTimeline: (value: number) => void;
   navigateToPreviousSong: () => void;
   navigateToNextSong: () => void;
   clearButtons: () => void;
@@ -43,7 +49,6 @@ export const VideoContextProvider = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const currentTimeRef = useRef<HTMLTimeElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
-  const seekerRef = useRef<HTMLDivElement>(null);
   const repeatButtonRef = useRef<HTMLButtonElement>(null);
   const shuffleButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -51,6 +56,7 @@ export const VideoContextProvider = ({
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const togglePlayVideo = () => {
     if (!videoRef.current) return;
@@ -72,11 +78,11 @@ export const VideoContextProvider = ({
   const toggleRepeatButton = () => {
     if (!repeatButtonRef.current) return;
     if (
-      repeatButtonRef.current.style.color === "var(--background-gray)" ||
+      repeatButtonRef.current.style.color === "var(--gray-250)" ||
       !repeatButtonRef.current.style.color
     )
       repeatButtonRef.current.style.color = "var(--white)";
-    else repeatButtonRef.current.style.color = "var(--background-gray)";
+    else repeatButtonRef.current.style.color = "var(--gray-250)";
   };
 
   const shufflePlaylist = () => {
@@ -116,11 +122,10 @@ export const VideoContextProvider = ({
     setIsMuted(false);
   };
 
-  function seekInTimeline(e: any) {
-    typeof e;
-    if (!videoRef.current || !seekerRef.current) return;
+  function seekInTimeline(value: number) {
+    if (!videoRef.current) return;
 
-    const percent = e.nativeEvent.offsetX / seekerRef.current.offsetWidth;
+    const percent = value / 100;
     videoRef.current.currentTime = percent * videoRef.current.duration;
   }
 
@@ -132,6 +137,7 @@ export const VideoContextProvider = ({
     ).toFixed(2);
 
     const percentagePlayed = Number(timePlayed) * 100;
+    setProgress(percentagePlayed);
 
     timelineRef.current.style.width = `${percentagePlayed}%`;
   };
@@ -160,7 +166,7 @@ export const VideoContextProvider = ({
   };
 
   const resetSong = () => {
-    seekInTimeline({ nativeEvent: { offsetX: 0 } });
+    seekInTimeline(0);
     videoRef.current?.play();
   };
 
@@ -178,12 +184,12 @@ export const VideoContextProvider = ({
         videoRef,
         currentTimeRef,
         timelineRef,
-        seekerRef,
         repeatButtonRef,
         shuffleButtonRef,
         isPaused,
         isMuted,
         playlist,
+        progress,
         togglePlayVideo,
         toggleAudio,
         toggleRepeatButton,

@@ -11,7 +11,7 @@ export function Header() {
           <li className={styles.list}>
             <Link href="/" prefetch={false}>Home</Link>
           </li>
-          <li className={styles.list}>
+          {/* <li className={styles.list}>
             <Link href="#">Explore</Link>
           </li>
           <li className={styles.list}>
@@ -19,7 +19,7 @@ export function Header() {
           </li>
           <li className={styles.list}>
             <Link href="#">Search</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

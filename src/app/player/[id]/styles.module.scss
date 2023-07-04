@@ -4,15 +4,14 @@
   grid-template-columns: 4fr 2fr;
 
   padding: 2rem 6rem;
-  background-color: var(--background-black);
+  background-color: var(--black-200);
 
-  height: 100vh;
   max-height: calc(100vh - 8rem);
 
-  @media (max-width: 500px) {
+
+  @media (max-width: 550px) {
     display: block;
 
-    overflow-y: hidden;
     padding: 0;
   }
 }
