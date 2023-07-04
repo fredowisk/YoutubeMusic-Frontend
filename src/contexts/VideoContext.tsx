@@ -1,13 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import {
-  ReactNode,
-  RefObject,
-  createContext,
-  useRef,
-  useState,
-} from "react";
+import { ReactNode, RefObject, createContext, useRef, useState } from "react";
 
 interface VideoContextValues {
   setPlaylist: (playlist: Song[]) => void;
@@ -22,6 +16,7 @@ interface VideoContextValues {
   isMuted: boolean;
   playlist: Song[];
   progress: number;
+  volume: number;
   togglePlayVideo: () => void;
   toggleAudio: () => void;
   toggleRepeatButton: () => void;
@@ -55,6 +50,7 @@ export const VideoContextProvider = ({
   const [playlist, setPlaylist] = useState<Song[]>([]);
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(50);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -78,11 +74,11 @@ export const VideoContextProvider = ({
   const toggleRepeatButton = () => {
     if (!repeatButtonRef.current) return;
     if (
-      repeatButtonRef.current.style.color === "var(--gray-250)" ||
+      repeatButtonRef.current.style.color === "var(--background-gray)" ||
       !repeatButtonRef.current.style.color
     )
       repeatButtonRef.current.style.color = "var(--white)";
-    else repeatButtonRef.current.style.color = "var(--gray-250)";
+    else repeatButtonRef.current.style.color = "var(--background-gray)";
   };
 
   const shufflePlaylist = () => {
@@ -97,10 +93,12 @@ export const VideoContextProvider = ({
   const updateVolume = (volume: number) => {
     if (!videoRef.current) return;
 
-    videoRef.current.volume = volume / 100;
+    const volumePercentage = volume / 100;
+    videoRef.current.volume = volumePercentage;
+    setVolume(volume);
 
-    if (videoRef.current.volume === 0 && !isMuted) return toggleAudio();
-    if (videoRef.current.volume > 0 && isMuted) return toggleAudio();
+    if (volumePercentage === 0 && !isMuted) return toggleAudio();
+    if (volumePercentage > 0 && isMuted) return toggleAudio();
   };
 
   const calculateCurrentTime = (
@@ -190,6 +188,7 @@ export const VideoContextProvider = ({
         isMuted,
         playlist,
         progress,
+        volume,
         togglePlayVideo,
         toggleAudio,
         toggleRepeatButton,

@@ -1,22 +1,24 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { VideoContext } from "@/contexts/VideoContext";
 
 import styles from "./styles.module.scss";
 
 interface VideoPlayerProps {
-  id: number
+  id: number;
 }
 
 export function VideoPlayer({ id }: VideoPlayerProps) {
-  const {
-    videoRef,
-    togglePlayVideo,
-    updateProgressBar,
-    endSong,
-  } = useContext(VideoContext);
+  const { videoRef, togglePlayVideo, updateProgressBar, endSong, volume } =
+    useContext(VideoContext);
+
+  useEffect(() => {
+    console.log(volume)
+    if (!videoRef.current) return;
+    videoRef.current.volume = volume / 100;
+  }, []);
 
   return (
     <div className={styles.container}>

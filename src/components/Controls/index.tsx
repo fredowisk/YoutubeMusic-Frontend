@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import {
   MdSkipPrevious,
@@ -18,13 +18,12 @@ import { VideoContext } from "@/contexts/VideoContext";
 import styles from "./styles.module.scss";
 
 interface ControlsProps {
-  song: Song
+  song: Song;
 }
 
 export function Controls({
   song: { thumbnail, duration, title, user },
 }: ControlsProps) {
-
   const {
     repeatButtonRef,
     shuffleButtonRef,
@@ -33,6 +32,7 @@ export function Controls({
     currentTimeRef,
     isPaused,
     isMuted,
+    volume,
     togglePlayVideo,
     toggleAudio,
     toggleRepeatButton,
@@ -82,6 +82,7 @@ export function Controls({
           onChange={(e) => updateVolume(Number(e.target.value))}
           min="0"
           max="100"
+          value={volume}
         />
         <button className={styles.songAudio} onClick={toggleAudio}>
           {isMuted ? <MdVolumeOff /> : <MdVolumeUp />}
