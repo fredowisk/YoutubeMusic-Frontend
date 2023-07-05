@@ -11,6 +11,8 @@ import { Carousel } from "@/components/Carousel";
 
 import styles from "./page.module.scss";
 
+export const revalidate = 0;
+
 export default async function Home() {
   preloadSongs();
   
