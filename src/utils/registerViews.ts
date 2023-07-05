@@ -1,4 +1,3 @@
-import { cache } from "react";
 import "server-only";
 import { query as q } from "faunadb";
 
@@ -13,11 +12,11 @@ interface ViewCollection {
   };
 }
 
-const getTotalViews = cache(async (): Promise<ViewCollection> => {
+const getTotalViews = async (): Promise<ViewCollection> => {
   return fauna.query<ViewCollection>(
     q.Get(q.Match(q.Index("visualization_by_id"), "2"))
   );
-});
+};
 
 export const registerViews = async (): Promise<void> => {
   const totalViews = await getTotalViews();
