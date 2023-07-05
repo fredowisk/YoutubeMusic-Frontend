@@ -4,14 +4,29 @@ export const metadata: Metadata = {
   title: "YouTube Music | Music Player",
 };
 
+import dynamic from "next/dynamic";
+
 import { getSongs, preloadSongs } from "@/utils/getSongs";
 
-import { VideoPlayer } from "@/components/VideoPlayer";
+import { Spinner } from "@/components/Spinner";
+
+const VideoPlayer = dynamic(
+  async () => {
+    const { VideoPlayer: Component } = await import("@/components/VideoPlayer");
+    return { default: Component };
+  },
+  {
+    loading: () => <Spinner />,
+    ssr: false,
+  }
+);
+
 import { PlaylistSongs } from "@/components/PlaylistSongs";
 import { VideoPanel } from "@/components/VideoPanel";
 
-import styles from "./styles.module.scss";
 import Error from "./error";
+
+import styles from "./styles.module.scss";
 
 interface PlayerPageProps {
   params: {

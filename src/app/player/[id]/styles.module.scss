@@ -6,8 +6,8 @@
   padding: 2rem 6rem;
   background-color: var(--black-200);
 
+  height: 100vh;
   max-height: calc(100vh - 8rem);
-
 
   @media (max-width: 550px) {
     display: block;
