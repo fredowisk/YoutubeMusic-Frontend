@@ -4,14 +4,21 @@ export const metadata: Metadata = {
   title: "YouTube Music | Home",
 };
 
+import { getSongs, preloadSongs } from "@/utils/getSongs";
+import { registerViews } from "@/utils/registerViews";
+
 import { Carousel } from "@/components/Carousel";
 
 import styles from "./page.module.scss";
 
-export default async function Home() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/songs`);
+export const revalidate = 60 * 60 * 24 * 365; //one year;
 
-  const songs = await response.json();
+export default async function Home() {
+  preloadSongs();
+  
+  const songs = await getSongs();
+  
+  await registerViews();
 
   return (
     <div className={styles.container}>

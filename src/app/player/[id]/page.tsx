@@ -4,6 +4,8 @@ export const metadata: Metadata = {
   title: "YouTube Music | Music Player",
 };
 
+import { getSongs, preloadSongs } from "@/utils/getSongs";
+
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { PlaylistSongs } from "@/components/PlaylistSongs";
 import { VideoPanel } from "@/components/VideoPanel";
@@ -17,12 +19,14 @@ interface PlayerPageProps {
   };
 }
 
-export default async function PlayerPage({ params: { id } }: PlayerPageProps) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/songs`);
+export const revalidate = 60 * 60 * 24 * 365; //one year;
 
-  const songs = (await response.json()) as Song[];
+export default async function PlayerPage({ params: { id } }: PlayerPageProps) {
+  preloadSongs();
 
   const numberId = Number(id);
+
+  const songs = await getSongs();
 
   const song = songs.find(({ song_id }) => song_id === numberId);
 
