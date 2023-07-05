@@ -11,8 +11,6 @@ import { Carousel } from "@/components/Carousel";
 
 import styles from "./page.module.scss";
 
-export const revalidate = 60 * 60 * 24 * 365; //one year;
-
 export default async function Home() {
   preloadSongs();
   

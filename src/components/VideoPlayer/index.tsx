@@ -15,7 +15,6 @@ export function VideoPlayer({ id }: VideoPlayerProps) {
     useContext(VideoContext);
 
   useEffect(() => {
-    console.log(volume)
     if (!videoRef.current) return;
     videoRef.current.volume = volume / 100;
   }, []);
