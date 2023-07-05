@@ -1,4 +1,5 @@
 import "server-only";
+
 import { query as q } from "faunadb";
 
 import { fauna } from "@/services/fauna";
