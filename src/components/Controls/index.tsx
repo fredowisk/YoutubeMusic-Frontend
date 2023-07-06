@@ -52,13 +52,13 @@ export function Controls({
           onClick={navigateToPreviousSong}
           className={styles.previousButton}
         >
-          <MdSkipPrevious />
+          <MdSkipPrevious title="Previous" />
         </button>
         <button className={styles.startButton} onClick={togglePlayVideo}>
-          {isPaused ? <MdPause /> : <MdPlayArrow />}
+          {isPaused ? <MdPlayArrow title="Play" /> : <MdPause title="Pause" />}
         </button>
         <button onClick={navigateToNextSong} className={styles.nextButton}>
-          <MdSkipNext />
+          <MdSkipNext title="Next" />
         </button>
       </div>
       <div className={styles.playerTimer}>
@@ -85,7 +85,7 @@ export function Controls({
           value={volume}
         />
         <button className={styles.songAudio} onClick={toggleAudio}>
-          {isMuted ? <MdVolumeOff /> : <MdVolumeUp />}
+          {isMuted ? <MdVolumeOff title="Mute" /> : <MdVolumeUp title="Unmute" />}
         </button>
 
         <button
@@ -93,14 +93,14 @@ export function Controls({
           onClick={toggleRepeatButton}
           ref={repeatButtonRef}
         >
-          <MdRepeat />
+          <MdRepeat title="Repeat" />
         </button>
         <button
           className={styles.shuffle}
           onClick={shufflePlaylist}
           ref={shuffleButtonRef}
         >
-          <MdShuffle />
+          <MdShuffle title="Shuffle"/>
         </button>
       </div>
     </div>
