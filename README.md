@@ -1,34 +1,100 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<br/>
+<div align="center">
+    <h1>YouTube Music</h1>
+    <p>A clone of YouTube Music website</p>
+</div>
 
-## Getting Started
+<p align="center">
+ <a href="#technologies">Technologies</a> •
+ <a href="#configurations">Configurations</a> •
+ <a href="#demo">Demo</a> •
+ <a href="#features">Features</a> •
+ <a href="#todo">Features to implement</a> •
+ <a href="#license">License</a>
+</p>
 
-First, run the development server:
+<br/>
+
+## Technologies
+
+- [ReactJS](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SASS](https://sass-lang.com/)
+- [FaunaDB](https://fauna.com/)
+
+<br/>
+
+## Configurations
+
+First install:
+
+- [Npm](https://www.npmjs.com/)
+
+And then, create an account at:
+
+- [FaunaDB](https://fauna.com/)
+
+Clone the project:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+$ git clone https://github.com/fredowisk/YoutubeMusic-Frontend.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Enter the project folder and run:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+$ npm i
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+$ cp .env.local.example .env.local
 
-## Learn More
+$ npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br/>
 
-## Deploy on Vercel
+## Demo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[Live Demo](https://youtube-music-frontend-seven.vercel.app/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<div align="center">
+
+### **/home**
+
+![Home](https://github.com/fredowisk/YoutubeMusic-Frontend/assets/53921083/a2376b10-a878-46c1-bd17-bf542a5055e4)
+
+<br/>
+
+### **/player/id**
+
+![Posts](https://github.com/fredowisk/YoutubeMusic-Frontend/assets/53921083/9d176ce4-4253-45bc-b8a0-fa9deb57446b)
+
+<br/>
+
+</div>
+
+## Features
+
+- ✅Lazy Loading
+- ✅Caching
+- ✅Static Regeneration
+- ✅Home page to choose a song
+- ✅Player page for listening and managing a song in a playlist
+- ✅Responsive support for multiple devices
+
+<br/>
+
+## Todo
+
+- ❎A page to explore multiple playlists
+- ❎A library for your own playlists
+- ❎A search bar to find songs
+
+<br/>
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

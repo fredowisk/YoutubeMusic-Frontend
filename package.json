@@ -14,7 +14,9 @@
     "typescript",
     "scss",
     "clone",
-    "frontend"
+    "frontend",
+    "react.js",
+    "faunadb"
   ],
   "dependencies": {
     "@types/node": "20.3.1",
